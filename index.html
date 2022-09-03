@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:pink;
+    }
+    .cabecita{
+        width:100px;
+        height:40px;
+        background: orange;
+        border-radius: 0 0 0 90px;
+        z-index: 1;
+    }
+    
+    .cabecita:hover{
+        background: rgb(255, 186, 57);
+    }
+    
+    .nariz{
+        
+        position: relative;
+        width: 30px;
+        height: 15px;
+        background-color: black;
+        border-radius: 0 0 30px 30px;
+        
+        /* Position */
+        left: -10px;
+        z-index: 2;
+    }
+
+    .nariz:hover{
+        background-color: rgb(43, 108, 128);
+    }
+
+    .mancha{
+        position: relative;
+        width: 60px;
+        height: 30px;
+        top: -15px;
+        right: -40px;
+        border-radius: 0 0 100px 100px;
+        background-color: orangered;
+        z-index: 3;
+    }
+
+    .oreja__mancha{
+        position: relative;
+        width: 30px;
+        height:40px;
+        top: -40px;
+        right: -30px;
+        border-radius: 100px 0 0 0;
+        background-color: orangered;
+        z-index: 5;
+    }
+
+    .oreja__mancha:hover{
+        background-color: rgba(255, 30, 0, 1);
+    }
+
+    .mancha:hover{
+        background-color: rgb(241, 122, 78);
+    }
+    
+    .oreja__mancha_2{
+        position: relative;
+        width: 30px;
+        height: 70px;
+        top: -25px;
+        right: 53px;
+        border-radius: 100px 0 0 0;
+        background-color: orange;
+        z-index: -15;
+    }
+
+    .oreja__mancha_2:hover{
+        background-color: rgb(240, 182, 75);
+    }
+
+    .ojo{
+        position: relative;
+        width: 7px;
+        height: 7px;
+        top: -8px;
+        right: 43px;
+        background-color: black;
+        border-radius: 100%;
+        z-index: 15;
+    }
+
+    .ojo:hover{
+        background-color: rgba(0, 0, 0, 0.329);
+    }
+    
+
+    .nombre{
+        display: block;
+        font-family: 'Oswald',sans-serif;
+        font-weight: bold;
+    }
+
+
+    /* @media (min-width:500px) {
+        .cabecita{
+            background:pink;
+        }
+    } */
+</style>
+<body>
+    <div class="cabecita">
+        <div class="nariz"></div>
+        <div class="mancha">
+            <div class="oreja__mancha"></div>
+        </div>
+    </div>
+    <div class="ojo"></div>
+    <div class="oreja__mancha_2"></div>
+    <div class="nombre">Hello !</div>
+</body>
+<script>
+    const nombre = document.querySelector('.nombre');
+    var puntos = 0;
+    function aparece(){
+        return new Promise(function(resolve,reject){
+            setInterval(
+                function(){
+                        if (puntos<3){
+                            const nodeName = nombre.innerHTML;
+                            nombre.innerHTML = `${nodeName}`+"."
+                            puntos = puntos +1;
+                            resolve()
+                        }else{
+                            nombre.innerHTML = 'Touch the dog'
+                            puntos = 0;
+                        }
+                    }    
+                ,700);
+        })
+    }
+    
+    aparece()
+
+</script>
+</html>
